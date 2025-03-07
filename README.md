@@ -8,6 +8,7 @@ Paperback extensions for websites which use the generic MangaStream layout.
 - [Asura Scans Free](https://asurascansfree.com/)
 - [Lunar Scans](https://lunarscan.org/)
 - [Night Scans](https://nightsup.net)
+- [Thunder Scans](https://en-thunderscans.com)
 
 ## Installation
 
