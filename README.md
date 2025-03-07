@@ -1,6 +1,6 @@
 # MangaStream Extensions
 
-Paperback extensions for websites which use the generic MangaStream layout.
+Paperback extensions for websites which use the generic MangaStream theme.
 
 ## Available Extensions
 
