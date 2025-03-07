@@ -14,7 +14,6 @@ concurrency:
 jobs:
     registry-update:
         name: Registry Update
-        if: ${{ github.repository != 'paperback-community/template-extensions' && github.event.workflow_run.conclusion == 'success' }}
         runs-on: ubuntu-latest
         steps:
             - name: Registry Management Workflow Dispatch
