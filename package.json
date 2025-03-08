@@ -1,6 +1,6 @@
 {
     "name": "mangastream-extensions",
-    "repositoryName": "MangaStream Extensions",
+    "repositoryName": "MangaStream Extensions (0.9)",
     "description": "Paperback extensions for websites which use the generic MangaStream theme. Maintained by the Paperback Community.",
     "private": true,
     "type": "module",
