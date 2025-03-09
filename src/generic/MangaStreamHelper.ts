@@ -4,8 +4,8 @@ export function getIncludedTagBySection(
 ): string {
     return (
         tags
-            ?.find((x: string) => x.startsWith(`${section}:`))
-            ?.replace(`${section}:`, "") ?? ""
+            ?.find((x: string) => x.startsWith(`${section}_`))
+            ?.replace(`${section}_`, "") ?? ""
     ).replace(" ", "+");
 }
 
@@ -20,9 +20,9 @@ export function getFilterTagsBySection(
     }
 
     return tags
-        ?.filter((x: string) => x.startsWith(`${section}:`))
+        ?.filter((x: string) => x.startsWith(`${section}_`))
         .map((x: string) => {
-            let id: string = x.replace(`${section}:`, "");
+            let id: string = x.replace(`${section}_`, "");
             if (!included) {
                 id = encodeURI(`-${id}`);
             }

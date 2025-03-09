@@ -270,7 +270,7 @@ export class MangaStreamParser {
 
             for (const tag of $("li", sectionDropdown).toArray()) {
                 const title = $("label", tag).text().trim();
-                const id = `${tagSections[i].title}:${$("input", tag).attr("value")}`;
+                const id = `${tagSections[i].title}_${$("input", tag).attr("value")}`;
 
                 if (!id || !title) {
                     continue;
