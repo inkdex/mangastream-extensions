@@ -5,7 +5,7 @@ import config from "./pbconfig";
 
 const DOMAIN_NAME = "https://en-thunderscans.com";
 
-class ThunderScansExt extends MangaStreamGeneric {
+class ThunderscansExt extends MangaStreamGeneric {
     name: string = config.name;
 
     domain: string = DOMAIN_NAME;
@@ -20,4 +20,4 @@ class ThunderScansExt extends MangaStreamGeneric {
     }
 }
 
-export const ThunderScans = new ThunderScansExt();
+export const Thunderscans = new ThunderscansExt();

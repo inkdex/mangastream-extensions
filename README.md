@@ -8,7 +8,7 @@ Paperback extensions for websites which use the generic MangaStream theme.
 - [Asura Scans Free](https://asurascansfree.com/)
 - [Lunar Scans](https://lunarscan.org/)
 - [Night Scans](https://nightsup.net)
-- [Thunder Scans](https://en-thunderscans.com)
+- [Thunderscans](https://en-thunderscans.com)
 
 ## Installation
 
