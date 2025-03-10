@@ -3,10 +3,10 @@ import { ContentRating, SourceInfo, SourceIntents } from "@paperback/types";
 export default {
     name: "Night Scans",
     description: "Extension that pulls content from nightsup.net.",
-    version: "1.0.0-alpha.2",
+    version: "1.0.0-alpha.3",
     icon: "icon.png",
     language: "en",
-    contentRating: ContentRating.MATURE,
+    contentRating: ContentRating.EVERYONE,
     badges: [],
     capabilities:
         SourceIntents.MANGA_CHAPTERS |

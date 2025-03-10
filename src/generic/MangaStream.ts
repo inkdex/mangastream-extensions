@@ -34,7 +34,7 @@ import {
     getFilterTagsBySection,
     getIncludedTagBySection,
 } from "./MangaStreamHelper";
-import { MangaStreamInterceptor } from "./MangaStreamIntercetor";
+import { MangaStreamInterceptor } from "./MangaStreamInterceptor";
 import {
     MangaStreamDiscoverSection,
     MangaStreamSearchMetadata,
@@ -180,11 +180,9 @@ export abstract class MangaStreamGeneric
     });
 
     async initialise(): Promise<void> {
-        // throw new Error("Method not implemented.");
-        this.cookieStorageInterceptor.registerInterceptor();
         this.globalRateLimiter.registerInterceptor();
+        this.cookieStorageInterceptor.registerInterceptor();
         this.requestManager?.registerInterceptor();
-        if (Application.isResourceLimited) return;
     }
 
     async getSearchTags(): Promise<TagSection[]> {
@@ -410,22 +408,14 @@ export abstract class MangaStreamGeneric
     }
 
     async saveCloudflareBypassCookies(cookies: Cookie[]): Promise<void> {
+        for (const cookie of this.cookieStorageInterceptor.cookies) {
+            this.cookieStorageInterceptor.deleteCookie(cookie);
+        }
         for (const cookie of cookies) {
-            if (
-                cookie.expires &&
-                cookie.expires.getUTCMilliseconds() <= Date.now()
-            ) {
+            if (cookie.expires && cookie.expires.getTime() <= Date.now()) {
                 continue;
             }
-            if (
-                cookie.name.startsWith("cf") ||
-                cookie.name.startsWith("_cf") ||
-                cookie.name.startsWith("__cf")
-            ) {
-                console.log("saving cloudflare cookie " + cookie.name);
-                console.log(cookie.expires);
-                this.cookieStorageInterceptor.setCookie(cookie);
-            }
+            this.cookieStorageInterceptor.setCookie(cookie);
         }
     }
 
@@ -504,7 +494,6 @@ export abstract class MangaStreamGeneric
             url: `${this.domain}/${path}/${slug}/`,
             method: "HEAD",
         };
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [headResponse, __] =
             await Application.scheduleRequest(headRequest);
         this.checkResponseError(headRequest, headResponse);
