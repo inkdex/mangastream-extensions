@@ -10,6 +10,8 @@ class ThunderscansExt extends MangaStreamGeneric {
 
     domain: string = DOMAIN_NAME;
 
+    override directoryPath: string = "comics";
+
     override configureSections() {
         this.latestUpdatesSection.selectorFunc = ($: CheerioAPI) =>
             $("div.bsx", $("h2:contains(Latest Update)").parent().next());
