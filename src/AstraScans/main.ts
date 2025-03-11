@@ -8,6 +8,8 @@ class AstraScansExt extends MangaStreamGeneric {
     domain = DOMAIN_NAME;
     name = config.name;
 
+    override directoryPath: string = "series";
+
     override configureSections(): void {
         this.latestUpdatesSection.selectorFunc = ($: CheerioAPI) =>
             $("div.bsx", $("h2:contains(Latest Update)")?.parent()?.next());
