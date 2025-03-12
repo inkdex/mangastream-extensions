@@ -172,7 +172,6 @@ export class MangaStreamParser {
             sortingIndex--;
         }
 
-        // If there are no chapters, throw error to avoid losing progress
         if (chapters.length == 0) {
             throw new Error(
                 `Couldn't find any chapters for mangaId: ${sourceManga.mangaId}!`,
@@ -180,7 +179,8 @@ export class MangaStreamParser {
         }
 
         return chapters.map((chapter) => {
-            if (chapter.sortingIndex) chapter.sortingIndex += chapters.length;
+            if (chapter.sortingIndex != undefined)
+                chapter.sortingIndex += chapters.length;
             return chapter;
         });
     }
