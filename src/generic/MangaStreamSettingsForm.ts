@@ -1,6 +1,7 @@
 import {
     ButtonRow,
     Form,
+    FormSectionElement,
     LabelRow,
     Section,
     ToggleRow,
@@ -29,7 +30,7 @@ export class MangaStreamSettings extends Form {
         this.name = name;
     }
 
-    override getSections(): Application.FormSectionElement[] {
+    override getSections(): FormSectionElement[] {
         return [
             Section(`${this.name} Settings`.replaceAll(" ", ""), [
                 ToggleRow("postIds", {
