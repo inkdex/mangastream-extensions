@@ -6,11 +6,11 @@ import pbconfig from "./pbconfig";
 const DOMAIN_NAME: string = "https://lunarscan.org/";
 
 class LunarScansExt extends MangaStreamGeneric {
-    domain = DOMAIN_NAME;
-    name = config.name;
-    contentRating: ContentRating = pbconfig.contentRating;
+  domain = DOMAIN_NAME;
+  name = config.name;
+  contentRating: ContentRating = pbconfig.contentRating;
 
-    override directoryPath = "series";
+  override directoryPath = "series";
 }
 
 export const LunarScans = new LunarScansExt();
