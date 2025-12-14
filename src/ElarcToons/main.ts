@@ -6,11 +6,11 @@ import pbconfig from "./pbconfig";
 const DOMAIN_NAME: string = "https://elarctoons.biz/";
 
 class ElarcToonsExtension extends MangaStreamGeneric {
-    domain = DOMAIN_NAME;
-    name = config.name;
-    contentRating: ContentRating = pbconfig.contentRating;
+  domain = DOMAIN_NAME;
+  name = config.name;
+  contentRating: ContentRating = pbconfig.contentRating;
 
-    override directoryPath: string = "library";
+  override directoryPath: string = "library";
 }
 
 export const ElarcToons = new ElarcToonsExtension();
