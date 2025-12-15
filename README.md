@@ -5,10 +5,20 @@ Paperback extensions for websites which use the generic MangaStream or MangaRead
 ## Available Extensions
 
 - [Astra Scans](https://astrascans.org)
-- [Asura Scans Free](https://asurascansfree.com)
+- [CypherScans](https://cypheroscans.xyz)
+- [DrakeScans](https://drakecomic.org)
+- [ElarcToons](https://elarctoons.biz)
+- [Hentai20](https://hentai20.io)
+- [IgnisComic](https://manhuaga.com)
+- [LelManga](https://lelmanga.com)
 - [Lunar Scans](https://lunarscan.org)
+- [ManhwaX](https://manhwax.top)
+- [MythicScans](https://mythicscans.net)
 - [Night Scans](https://nightsup.net)
+- [RawKuma](https://rawkuma.com)
+- [SushiScans](https://sushiscan.net)
 - [Thunderscans](https://en-thunderscans.com)
+- [xCalibrScans](https;//xcalibrscans.com)
 
 ## Installation
 
