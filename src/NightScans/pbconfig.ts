@@ -1,22 +1,23 @@
-import { ContentRating, SourceInfo, SourceIntents } from "@paperback/types";
+import { ContentRating, ExtensionInfo, SourceIntents } from "@paperback/types";
+import { getVersion } from "../generic/MangaStreamUtils";
 
 export default {
   name: "Night Scans",
   description: "Extension that pulls content from nightsup.net.",
-  version: "1.0.0-alpha.4",
+  version: getVersion({ increasePrerelease: 3 }),
   icon: "icon.png",
   language: "en",
   contentRating: ContentRating.EVERYONE,
   badges: [],
   capabilities:
-    SourceIntents.MANGA_CHAPTERS |
-    SourceIntents.DISCOVER_SECIONS |
-    SourceIntents.SETTINGS_UI |
-    SourceIntents.MANGA_SEARCH,
+    SourceIntents.CHAPTER_PROVIDING |
+    SourceIntents.DISCOVER_SECIONS_PROVIDING |
+    SourceIntents.SETTINGS_FORM_PROVIDING |
+    SourceIntents.SEARCH_RESULTS_PROVIDING,
   developers: [
     {
       name: "nyzzik",
       github: "https://github.com/nyzzik",
     },
   ],
-} satisfies SourceInfo;
+} satisfies ExtensionInfo;
