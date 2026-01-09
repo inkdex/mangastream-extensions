@@ -42,8 +42,6 @@ import {
 import { MangaStreamParser } from "./MangaStreamParser";
 import { getUsePostIds, MangaStreamSettings } from "./MangaStreamSettingsForm";
 
-const BASE_VERSION = "1.0.0";
-
 export abstract class MangaStreamGeneric
   implements
     Extension,
