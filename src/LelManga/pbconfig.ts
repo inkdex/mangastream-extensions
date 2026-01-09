@@ -1,4 +1,4 @@
-import { ContentRating, ExtensionInfo, SourceIntents } from "@paperback/types";
+import { ContentRating, type ExtensionInfo, SourceIntents } from "@paperback/types";
 import { getVersion } from "../generic/MangaStreamUtils";
 
 export default {

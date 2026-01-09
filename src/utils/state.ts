@@ -1,4 +1,4 @@
-import { Form, SelectorID } from "@paperback/types";
+import { Form, type SelectorID } from "@paperback/types";
 
 // Usage:
 // const [test, setTest, selectorTest] = createFormState(this, 0)

@@ -1,43 +1,43 @@
 import {
   BasicRateLimiter,
-  Chapter,
-  ChapterDetails,
-  ChapterProviding,
-  CloudflareBypassRequestProviding,
+  type Chapter,
+  type ChapterDetails,
+  type ChapterProviding,
+  type CloudflareBypassRequestProviding,
   CloudflareError,
   ContentRating,
-  Cookie,
+  type Cookie,
   CookieStorageInterceptor,
-  DiscoverSection,
-  DiscoverSectionItem,
-  DiscoverSectionProviding,
+  type DiscoverSection,
+  type DiscoverSectionItem,
+  type DiscoverSectionProviding,
   DiscoverSectionType,
-  Extension,
+  type Extension,
   Form,
-  MangaProviding,
-  PagedResults,
+  type MangaProviding,
+  type PagedResults,
   PaperbackInterceptor,
-  Request,
-  Response,
-  SearchFilter,
-  SearchQuery,
-  SearchResultItem,
-  SearchResultsProviding,
-  SettingsFormProviding,
-  SourceManga,
-  TagSection,
+  type Request,
+  type Response,
+  type SearchFilter,
+  type SearchQuery,
+  type SearchResultItem,
+  type SearchResultsProviding,
+  type SettingsFormProviding,
+  type SourceManga,
+  type TagSection,
 } from "@paperback/types";
 import * as cheerio from "cheerio";
-import { AnyNode } from "domhandler";
+import { type AnyNode } from "domhandler";
 import { URLBuilder } from "../utils/url-builder/base";
 import { getFilterTagsBySection, getIncludedTagBySection } from "./MangaStreamHelper";
 import { MangaStreamInterceptor } from "./MangaStreamInterceptor";
 import {
-  MangaStreamDiscoverSection,
-  MangaStreamSearchMetadata,
-  MangaStreamSlug,
-  Months,
-  StatusTypes,
+  type MangaStreamDiscoverSection,
+  type MangaStreamSearchMetadata,
+  type MangaStreamSlug,
+  type Months,
+  type StatusTypes,
 } from "./MangaStreamInterfaces";
 import { MangaStreamParser } from "./MangaStreamParser";
 import { getUsePostIds, MangaStreamSettings } from "./MangaStreamSettingsForm";
@@ -507,21 +507,3 @@ export abstract class MangaStreamGeneric
 
   configureSections(): void {}
 }
-export const getExportVersion = (EXTENSION_VERSION: string): string => {
-  const baseParts = BASE_VERSION.split("-");
-  const extParts = EXTENSION_VERSION.split("-");
-
-  const baseVersionNumbers = baseParts[0].split(".").map(Number);
-  const extVersionNumbers = extParts[0].split(".").map(Number);
-
-  const newVersionNumbers = baseVersionNumbers.map(
-    (num, index) => (extVersionNumbers[index] || 0) + num,
-  );
-
-  const baseSuffix = baseParts[1] ? `-${baseParts.slice(1).join("-")}` : "";
-  const extSuffix = extParts[1] ? `-${extParts.slice(1).join("-")}` : "";
-
-  const finalSuffix = baseSuffix || extSuffix;
-
-  return `${newVersionNumbers.join(".")}${finalSuffix}`;
-};

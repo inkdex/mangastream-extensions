@@ -1,5 +1,5 @@
 import { MangaStreamGeneric } from "./MangaStream";
-import { Months } from "./MangaStreamInterfaces";
+import { type Months } from "./MangaStreamInterfaces";
 
 const BASE_VERSION = "1.0.0-alpha.2";
 

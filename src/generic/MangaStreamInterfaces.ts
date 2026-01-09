@@ -1,6 +1,6 @@
-import { DiscoverSection, SearchResultItem } from "@paperback/types";
-import { BasicAcceptedElems, Cheerio, CheerioAPI } from "cheerio";
-import { AnyNode } from "domhandler";
+import type { DiscoverSection, SearchResultItem } from "@paperback/types";
+import type { BasicAcceptedElems, Cheerio, CheerioAPI } from "cheerio";
+import type { AnyNode } from "domhandler";
 
 export interface Months {
   january: string;
