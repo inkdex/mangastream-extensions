@@ -1,15 +1,15 @@
 import {
-  Chapter,
-  ChapterDetails,
-  DiscoverSectionItem,
-  SourceManga,
-  Tag,
-  TagSection,
+  type Chapter,
+  type ChapterDetails,
+  type DiscoverSectionItem,
+  type SourceManga,
+  type Tag,
+  type TagSection,
 } from "@paperback/types";
-import { Cheerio, CheerioAPI } from "cheerio";
+import type { Cheerio, CheerioAPI } from "cheerio";
 import { Element } from "domhandler";
 import { MangaStreamGeneric } from "./MangaStream";
-import { MangaStreamDiscoverSection, MangaStreamSearchResultItem } from "./MangaStreamInterfaces";
+import { type MangaStreamDiscoverSection, type MangaStreamSearchResultItem } from "./MangaStreamInterfaces";
 import { getUsePostIds } from "./MangaStreamSettingsForm";
 import { convertDate } from "./MangaStreamUtils";
 

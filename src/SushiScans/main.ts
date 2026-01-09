@@ -1,5 +1,5 @@
 import { ContentRating } from "@paperback/types";
-import { CheerioAPI } from "cheerio";
+import { type CheerioAPI } from "cheerio";
 import { MangaStreamGeneric } from "../generic/MangaStream";
 import config from "./pbconfig";
 import pbconfig from "./pbconfig";
