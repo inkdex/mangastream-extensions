@@ -9,7 +9,10 @@ import {
 import type { Cheerio, CheerioAPI } from "cheerio";
 import { Element } from "domhandler";
 import { MangaStreamGeneric } from "./MangaStream";
-import { type MangaStreamDiscoverSection, type MangaStreamSearchResultItem } from "./MangaStreamInterfaces";
+import {
+  type MangaStreamDiscoverSection,
+  type MangaStreamSearchResultItem,
+} from "./MangaStreamInterfaces";
 import { getUsePostIds } from "./MangaStreamSettingsForm";
 import { convertDate } from "./MangaStreamUtils";
 
@@ -233,19 +236,20 @@ export class MangaStreamParser {
     const sectionDropDowns = $("ul.dropdown-menu.c4.genrez, ul.dropdown-menu.c1").toArray();
     for (let i = 0; i < 4; ++i) {
       const sectionDropdown = sectionDropDowns[i];
-      if (!sectionDropdown) {
+      const section = tagSections[i];
+      if (!sectionDropdown || !section) {
         continue;
       }
 
       for (const tag of $("li", sectionDropdown).toArray()) {
         const title = $("label", tag).text().trim();
-        const id = `${tagSections[i].title}_${$("input", tag).attr("value")}`;
+        const id = `${section.title}_${$("input", tag).attr("value")}`;
 
         if (!id || !title) {
           continue;
         }
 
-        tagSections[i].tags.push({ id, title });
+        section.tags.push({ id, title });
       }
     }
 
