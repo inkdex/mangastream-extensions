@@ -15,7 +15,6 @@ Paperback extensions for websites which use the generic MangaStream or MangaRead
 - [ManhwaX](https://manhwax.top)
 - [MythicScans](https://mythicscans.net)
 - [Night Scans](https://nightsup.net)
-- [RawKuma](https://rawkuma.com)
 - [SushiScans](https://sushiscan.net)
 - [Thunderscans](https://en-thunderscans.com)
 - [xCalibrScans](https;//xcalibrscans.com)
