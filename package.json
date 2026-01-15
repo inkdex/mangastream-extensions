@@ -8,7 +8,7 @@
     "lint:check": "oxlint --type-aware --deny-warnings",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
-    "tsc": "tsc --project tsconfig.json --noEmit",
+    "tsc": "tsc",
     "bundle": "paperback-cli bundle",
     "serve": "paperback-cli serve",
     "logcat": "paperback-cli logcat",
