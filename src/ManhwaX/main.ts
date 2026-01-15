@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+/* Copyright © 2026 Inkdex */
+
 import { ContentRating } from "@paperback/types";
 import { type BasicAcceptedElems, type CheerioAPI } from "cheerio";
 import { type AnyNode } from "domhandler";
