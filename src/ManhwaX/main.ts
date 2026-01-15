@@ -4,7 +4,7 @@
 import { ContentRating } from "@paperback/types";
 import { type BasicAcceptedElems, type CheerioAPI } from "cheerio";
 import { type AnyNode } from "domhandler";
-import { MangaStreamGeneric } from "../generic/MangaStream";
+import { MangaStreamGeneric } from "../generic/main";
 import config from "./pbconfig";
 import pbconfig from "./pbconfig";
 

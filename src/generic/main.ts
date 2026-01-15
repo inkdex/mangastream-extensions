@@ -33,17 +33,17 @@ import {
 import * as cheerio from "cheerio";
 import { type AnyNode } from "domhandler";
 import { URLBuilder } from "../utils/url-builder/base";
-import { getFilterTagsBySection, getIncludedTagBySection } from "./MangaStreamHelper";
-import { MangaStreamInterceptor } from "./MangaStreamInterceptor";
+import { getFilterTagsBySection, getIncludedTagBySection } from "./utils";
+import { MangaStreamInterceptor } from "./network";
 import {
   type MangaStreamDiscoverSection,
   type MangaStreamSearchMetadata,
   type MangaStreamSlug,
   type Months,
   type StatusTypes,
-} from "./MangaStreamInterfaces";
-import { MangaStreamParser } from "./MangaStreamParser";
-import { getUsePostIds, MangaStreamSettings } from "./MangaStreamSettingsForm";
+} from "./models";
+import { MangaStreamParser } from "./parsers";
+import { getUsePostIds, MangaStreamSettings } from "./forms";
 
 export abstract class MangaStreamGeneric
   implements
