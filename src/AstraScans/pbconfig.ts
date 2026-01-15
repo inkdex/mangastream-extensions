@@ -1,27 +1,12 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { ContentRating, type ExtensionInfo, SourceIntents } from "@paperback/types";
-import { getVersion } from "../generic/MangaStreamUtils";
+import { basePbConfig, customVersion } from "../generic/config";
 
-export default {
-  name: "Astra Scans",
-  description: "Extension that pulls content from astrascans.org.",
-  version: getVersion({ increasePrerelease: 4 }),
-  icon: "icon.png",
-  language: "en",
-  contentRating: ContentRating.EVERYONE,
-  badges: [],
-  capabilities:
-    SourceIntents.CHAPTER_PROVIDING |
-    SourceIntents.DISCOVER_SECIONS_PROVIDING |
-    SourceIntents.SETTINGS_FORM_PROVIDING |
-    SourceIntents.SEARCH_RESULTS_PROVIDING |
-    SourceIntents.CLOUDFLARE_BYPASS_PROVIDING,
-  developers: [
-    {
-      name: "nyzzik",
-      github: "https://github.com/nyzzik",
-    },
-  ],
-} satisfies ExtensionInfo;
+let pbConfig = basePbConfig;
+
+pbConfig.name = "Astra Scans";
+pbConfig.description = "Extension that pulls content from astrascans.org.";
+pbConfig.version = customVersion({ increasePrerelease: 4 });
+
+export default basePbConfig;

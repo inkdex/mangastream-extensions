@@ -11,13 +11,10 @@ import {
 } from "@paperback/types";
 import type { Cheerio, CheerioAPI } from "cheerio";
 import { Element } from "domhandler";
-import { MangaStreamGeneric } from "./MangaStream";
-import {
-  type MangaStreamDiscoverSection,
-  type MangaStreamSearchResultItem,
-} from "./MangaStreamInterfaces";
-import { getUsePostIds } from "./MangaStreamSettingsForm";
-import { convertDate } from "./MangaStreamUtils";
+import { MangaStreamGeneric } from "./main";
+import { type MangaStreamDiscoverSection, type MangaStreamSearchResultItem } from "./models";
+import { getUsePostIds } from "./forms";
+import { convertDate } from "./utils";
 
 export class MangaStreamParser {
   parseMangaDetails($: CheerioAPI, mangaId: string, source: MangaStreamGeneric): SourceManga {

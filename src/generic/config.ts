@@ -1,12 +1,33 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { MangaStreamGeneric } from "./MangaStream";
-import { type Months } from "./MangaStreamInterfaces";
+import { ContentRating, SourceIntents, type ExtensionInfo } from "@paperback/types";
 
-const BASE_VERSION = "1.0.0-alpha.2";
+const BASE_VERSION = "1.0.0-alpha.3";
 
-export function getVersion(
+export const basePbConfig = {
+  name: "",
+  description: "",
+  version: BASE_VERSION,
+  icon: "icon.png",
+  language: "en",
+  contentRating: "EVERYONE" as ContentRating,
+  capabilities: [
+    SourceIntents.CHAPTER_PROVIDING,
+    SourceIntents.DISCOVER_SECIONS_PROVIDING,
+    SourceIntents.SEARCH_RESULTS_PROVIDING,
+    SourceIntents.SETTINGS_FORM_PROVIDING,
+  ],
+  badges: [],
+  developers: [
+    {
+      name: "nyzzik",
+      github: "https://github.com/nyzzik",
+    },
+  ],
+} satisfies ExtensionInfo;
+
+export function customVersion(
   options?:
     | {
         increaseMajor?: number;
@@ -42,6 +63,7 @@ export function getVersion(
     if (!baseParts[1]) {
       throw new Error(`Invalid BASE_VERSION: '${BASE_VERSION}'. Missing prerelease identifier.`);
     }
+
     const prereleaseParts = baseParts[1].split(".");
     if (prereleaseParts.length < 2 || isNaN(Number(prereleaseParts[1]))) {
       throw new Error(
@@ -73,28 +95,4 @@ export function getVersion(
   const newPatch = (versionNumbers[2] ?? 0) + (options.increasePatch || 0);
 
   return `${newMajor}.${newMinor}.${newPatch}`;
-}
-
-export function convertDate(dateString: string, source: MangaStreamGeneric): Date {
-  // Parsed date string
-  dateString = dateString.toLowerCase();
-
-  // Month formats provided by the source
-  const dateMonths: Months = source.dateMonths;
-
-  let date: Date | null = null;
-
-  for (const [key, value] of Object.entries(dateMonths)) {
-    if (dateString.toLowerCase().includes((value as string).toLowerCase())) {
-      date = new Date(dateString.replace(value as string, key ?? ""));
-    }
-  }
-
-  if (!date || String(date) == "Invalid Date") {
-    console.log(
-      "Failed to parse chapter date! TO DEV: Please check if the entered months reflect the sites months",
-    );
-    return new Date();
-  }
-  return date;
 }
