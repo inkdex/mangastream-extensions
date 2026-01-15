@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+/* Copyright © 2026 Inkdex */
+
 export function getIncludedTagBySection(section: string, tags: string[]): string {
   return (
     tags?.find((x: string) => x.startsWith(`${section}_`))?.replace(`${section}_`, "") ?? ""
