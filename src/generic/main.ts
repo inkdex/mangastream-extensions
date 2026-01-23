@@ -60,16 +60,9 @@ export abstract class MangaStreamGeneric
 
   parser: MangaStreamParser = new MangaStreamParser();
 
-  private _requestManager?: PaperbackInterceptor;
+  interceptor?: PaperbackInterceptor;
 
-  get requestManager(): PaperbackInterceptor {
-    if (!this._requestManager) {
-      this._requestManager = new MangaStreamInterceptor("main", this.domain);
-    }
-    return this._requestManager;
-  }
-
-  language = "🇬🇧";
+  language = "en";
 
   bypassPage = "";
   mangaSelectorAlternativeTitles = "Alternative Titles";
@@ -172,7 +165,8 @@ export abstract class MangaStreamGeneric
   async initialise(): Promise<void> {
     this.globalRateLimiter.registerInterceptor();
     this.cookieStorageInterceptor.registerInterceptor();
-    this.requestManager?.registerInterceptor();
+    this.interceptor = this.interceptor ?? new MangaStreamInterceptor("main", this.domain);
+    this.interceptor.registerInterceptor();
   }
 
   async getSearchTags(): Promise<TagSection[]> {
