@@ -7,7 +7,6 @@ import {
   type ChapterDetails,
   type ChapterProviding,
   type CloudflareBypassRequestProviding,
-  CloudflareError,
   ContentRating,
   type Cookie,
   CookieStorageInterceptor,
@@ -21,7 +20,6 @@ import {
   type PagedResults,
   PaperbackInterceptor,
   type Request,
-  type Response,
   type SearchFilter,
   type SearchQuery,
   type SearchResultItem,
@@ -62,7 +60,14 @@ export abstract class MangaStreamGeneric
 
   parser: MangaStreamParser = new MangaStreamParser();
 
-  requestManager: PaperbackInterceptor | undefined;
+  private _requestManager?: PaperbackInterceptor;
+
+  get requestManager(): PaperbackInterceptor {
+    if (!this._requestManager) {
+      this._requestManager = new MangaStreamInterceptor("main", this.domain);
+    }
+    return this._requestManager;
+  }
 
   language = "🇬🇧";
 
@@ -127,7 +132,6 @@ export abstract class MangaStreamGeneric
   ];
 
   constructor() {
-    this.setup();
     this.configureSections();
   }
 
@@ -153,10 +157,6 @@ export abstract class MangaStreamGeneric
       console.log(e);
     }
     return filters;
-  }
-
-  setup() {
-    this.requestManager = new MangaStreamInterceptor("main", this.domain);
   }
 
   globalRateLimiter = new BasicRateLimiter("ratelimiter", {
@@ -185,8 +185,7 @@ export abstract class MangaStreamGeneric
       method: "GET",
     };
 
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_response, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
     tags = this.parser.parseTags($);
     Application.setState(tags, "tags");
@@ -227,8 +226,7 @@ export abstract class MangaStreamGeneric
       url: urlBuilder.build(),
       method: "GET",
     };
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_response, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
     const results = this.parser.parseSearchResults($);
 
@@ -265,8 +263,7 @@ export abstract class MangaStreamGeneric
         : `${this.domain}/${this.directoryPath}/${mangaId}/`,
       method: "GET",
     };
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_response, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
 
     return this.parser.parseMangaDetails($, mangaId, this);
@@ -280,8 +277,7 @@ export abstract class MangaStreamGeneric
     };
 
     // const response = await this.requestManager.schedule(request, 1)
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_response, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
 
     return this.parser.parseChapterList($, sourceManga, this);
@@ -295,8 +291,7 @@ export abstract class MangaStreamGeneric
       method: "GET",
     };
 
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
 
     const chapters = $("div#chapterlist").find("li").toArray();
@@ -323,7 +318,6 @@ export abstract class MangaStreamGeneric
     };
 
     const [_response, _buffer] = await Application.scheduleRequest(_request);
-    this.checkResponseError(_request, _response);
     const _$ = cheerio.load(Application.arrayBufferToUTF8String(_buffer));
 
     return this.parser.parseChapterDetails(_$, chap);
@@ -351,8 +345,7 @@ export abstract class MangaStreamGeneric
       method: "GET",
     };
 
-    const [response, buffer] = await Application.scheduleRequest(request);
-    this.checkResponseError(request, response);
+    const [_response, buffer] = await Application.scheduleRequest(request);
     const $ = cheerio.load(Application.arrayBufferToUTF8String(buffer));
     let s: MangaStreamDiscoverSection;
     switch (section.id) {
@@ -385,16 +378,6 @@ export abstract class MangaStreamGeneric
         continue;
       }
       this.cookieStorageInterceptor.setCookie(cookie);
-    }
-  }
-
-  checkResponseError(request: Request, response: Response): void {
-    switch (response.status) {
-      case 403:
-      case 503:
-        throw new CloudflareError(request, "Error Code: " + response.status);
-      case 404:
-        throw new Error(`The requested page ${response.url} was not found!`);
     }
   }
 
@@ -459,7 +442,6 @@ export abstract class MangaStreamGeneric
       method: "HEAD",
     };
     const [headResponse, __] = await Application.scheduleRequest(headRequest);
-    this.checkResponseError(headRequest, headResponse);
 
     let postId: string;
 

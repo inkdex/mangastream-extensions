@@ -11,12 +11,13 @@ export const basePbConfig = {
   version: BASE_VERSION,
   icon: "icon.png",
   language: "en",
-  contentRating: "EVERYONE" as ContentRating,
+  contentRating: ContentRating.EVERYONE as ContentRating,
   capabilities: [
     SourceIntents.CHAPTER_PROVIDING,
     SourceIntents.DISCOVER_SECIONS_PROVIDING,
     SourceIntents.SEARCH_RESULTS_PROVIDING,
     SourceIntents.SETTINGS_FORM_PROVIDING,
+    SourceIntents.CLOUDFLARE_BYPASS_PROVIDING,
   ],
   badges: [],
   developers: [
