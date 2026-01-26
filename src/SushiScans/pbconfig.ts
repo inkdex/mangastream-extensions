@@ -1,11 +1,12 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { basePbConfig } from "../generic/config";
+import { basePbConfig, customVersion } from "../generic/config";
 
 let pbConfig = basePbConfig;
 
 pbConfig.name = "SushiScans";
 pbConfig.description = "Extension that pulls content from sushiscan.net.";
+pbConfig.version = customVersion({ increasePrerelease: 1 });
 
 export default pbConfig;
