@@ -16,7 +16,12 @@ class DrakeScansExtension extends MangaStreamGeneric {
 
   override configureSections(): void {
     this.latestUpdatesSection.selectorFunc = ($: CheerioAPI) =>
-      $("div.bsx", $("h2:contains(Latest Update)")?.parent()?.next());
+      $("div.bsx", $("h2:contains('Latest update')").closest("div.releases").next("div.listupd"));
+    this.featuredSection.selectorFunc = ($: CheerioAPI) =>
+      $(
+        "div.bsx",
+        $("h2:contains('Popular today')").closest("div.releases").next("div.listupd.popularslider"),
+      );
   }
 }
 
