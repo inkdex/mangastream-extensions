@@ -3,7 +3,7 @@
 
 import { ContentRating, SourceIntents, type ExtensionInfo } from "@paperback/types";
 
-const BASE_VERSION = "1.0.0-alpha.4";
+const BASE_VERSION = "1.0.0-alpha.5";
 
 export const basePbConfig = {
   name: "",
