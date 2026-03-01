@@ -27,10 +27,10 @@ import {
   type SettingsFormProviding,
   type SourceManga,
   type TagSection,
+  URL,
 } from "@paperback/types";
 import * as cheerio from "cheerio";
 import { type AnyNode } from "domhandler";
-import { URLBuilder } from "../utils/url-builder/base";
 import { getFilterTagsBySection, getIncludedTagBySection } from "./utils";
 import { MangaStreamInterceptor } from "./network";
 import {
@@ -192,12 +192,12 @@ export abstract class MangaStreamGeneric
   ): Promise<PagedResults<SearchResultItem>> {
     const page: number = metadata?.page ?? 1;
 
-    let urlBuilder: URLBuilder = new URLBuilder(this.domain)
-      .addPath(this.directoryPath)
-      .addQuery("page", page.toString());
+    let urlBuilder: URL = new URL(this.domain)
+      .addPathComponent(this.directoryPath)
+      .setQueryItem("page", page.toString());
 
     if (query?.title) {
-      urlBuilder = urlBuilder.addQuery(
+      urlBuilder = urlBuilder.setQueryItem(
         "s",
         encodeURIComponent(query?.title.replace(/[’–][a-z]*/g, "") ?? ""),
       );
@@ -210,14 +210,14 @@ export abstract class MangaStreamGeneric
         }
       }
       urlBuilder = urlBuilder
-        .addQuery("genre", getFilterTagsBySection("genres", includedTags, true))
-        .addQuery("status", getIncludedTagBySection("status", includedTags))
-        .addQuery("type", getIncludedTagBySection("type", includedTags))
-        .addQuery("order", getIncludedTagBySection("order", includedTags));
+        .setQueryItem("genre", getFilterTagsBySection("genres", includedTags, true))
+        .setQueryItem("status", getIncludedTagBySection("status", includedTags))
+        .setQueryItem("type", getIncludedTagBySection("type", includedTags))
+        .setQueryItem("order", getIncludedTagBySection("order", includedTags));
     }
 
     const request = {
-      url: urlBuilder.build(),
+      url: urlBuilder.toString(),
       method: "GET",
     };
     const [_response, buffer] = await Application.scheduleRequest(request);
