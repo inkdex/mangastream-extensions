@@ -8,6 +8,7 @@ Paperback extensions for websites which use the generic MangaStream or MangaRead
 - [Hentai20](https://hentai20.io)
 - [LelManga](https://lelmanga.com)
 - [ManhwaX](https://manhwax.top)
+- [RageScans](https://ragescans.com)
 - [SushiScans](https://sushiscan.net)
 - [Thunderscans](https://en-thunderscans.com)
 
