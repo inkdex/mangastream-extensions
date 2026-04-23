@@ -1,5 +1,5 @@
 {
-  "name": "mangastream-extensions",
+  "name": "MangaStream Extensions (0.9)",
   "private": true,
   "description": "Paperback extensions for websites which use the generic MangaStream or MangaReader themes. Maintained by Inkdex.",
   "type": "module",
@@ -17,19 +17,13 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@paperback/toolchain": "^1.0.0-alpha.57",
-    "@paperback/types": "^1.0.0-alpha.57",
-    "cheerio": "1.2.0",
+    "@paperback/toolchain": "^1.0.0-alpha.74",
+    "@paperback/types": "^1.0.0-alpha.74",
+    "cheerio": "^1.2.0",
     "husky": "^9.1.7",
-    "oxfmt": "^0.36.0",
-    "oxlint": "^1.51.0",
-    "oxlint-tsgolint": "^0.16.0",
-    "typescript": "^5.9.3"
-  },
-  "overrides": {
-    "cheerio": {
-      "entities": "6.0.1"
-    }
-  },
-  "repositoryName": "MangaStream Extensions (0.9)"
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "oxlint-tsgolint": "^0.21.1",
+    "typescript": "^6.0.3"
+  }
 }

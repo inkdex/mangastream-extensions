@@ -1,14 +1,7 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import {
-  ButtonRow,
-  Form,
-  type FormSectionElement,
-  LabelRow,
-  Section,
-  ToggleRow,
-} from "@paperback/types";
+import { ButtonRow, Form, LabelRow, Section, ToggleRow } from "@paperback/types";
 
 function toBoolean(value: unknown): boolean {
   return (value ?? false) === "true";
@@ -33,7 +26,7 @@ export class MangaStreamSettings extends Form {
     this.name = name;
   }
 
-  override getSections(): FormSectionElement[] {
+  override getSections() {
     return [
       Section(`${this.name} Settings`.replaceAll(" ", ""), [
         ToggleRow("postIds", {
