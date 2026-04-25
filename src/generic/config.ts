@@ -1,7 +1,12 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { ContentRating, SourceIntents, type ExtensionInfo } from "@paperback/types";
+import {
+  ContentRating,
+  SourceIntents,
+  type ExtensionInfo,
+  type SourceDeveloper,
+} from "@paperback/types";
 
 const BASE_VERSION = "1.0.0-alpha.5";
 
@@ -14,10 +19,10 @@ export const basePbConfig = {
   contentRating: ContentRating.EVERYONE as ContentRating,
   capabilities: [
     SourceIntents.CHAPTER_PROVIDING,
+    SourceIntents.CLOUDFLARE_BYPASS_PROVIDING,
     SourceIntents.DISCOVER_SECTION_PROVIDING,
     SourceIntents.SEARCH_RESULT_PROVIDING,
     SourceIntents.SETTINGS_FORM_PROVIDING,
-    SourceIntents.CLOUDFLARE_BYPASS_PROVIDING,
   ],
   badges: [],
   developers: [
@@ -25,7 +30,7 @@ export const basePbConfig = {
       name: "nyzzik",
       github: "https://github.com/nyzzik",
     },
-  ],
+  ] as SourceDeveloper[],
 } satisfies ExtensionInfo;
 
 export function customVersion(

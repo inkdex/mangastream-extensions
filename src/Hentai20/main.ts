@@ -2,6 +2,7 @@
 /* Copyright © 2026 Inkdex */
 
 import { ContentRating } from "@paperback/types";
+
 import { MangaStreamGeneric } from "../generic/main";
 import config from "./pbconfig";
 import pbconfig from "./pbconfig";

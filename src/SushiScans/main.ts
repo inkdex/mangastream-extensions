@@ -8,11 +8,12 @@ import {
   ContentRating,
 } from "@paperback/types";
 import { type CheerioAPI } from "cheerio";
-import { MangaStreamGeneric } from "../generic/main";
+import * as cheerio from "cheerio";
+
 import { getUsePostIds } from "../generic/forms";
+import { MangaStreamGeneric } from "../generic/main";
 import config from "./pbconfig";
 import pbconfig from "./pbconfig";
-import * as cheerio from "cheerio";
 
 const DOMAIN_NAME = "https://sushiscan.net";
 
