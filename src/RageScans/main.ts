@@ -3,6 +3,7 @@
 
 import { ContentRating } from "@paperback/types";
 import { type CheerioAPI } from "cheerio";
+
 import { MangaStreamGeneric } from "../generic/main";
 import config from "./pbconfig";
 import pbconfig from "./pbconfig";

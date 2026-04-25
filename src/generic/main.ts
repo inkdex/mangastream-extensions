@@ -31,8 +31,8 @@ import {
 } from "@paperback/types";
 import * as cheerio from "cheerio";
 import { type AnyNode } from "domhandler";
-import { getFilterTagsBySection, getIncludedTagBySection } from "./utils";
-import { MangaStreamInterceptor } from "./network";
+
+import { getUsePostIds, MangaStreamSettings } from "./forms";
 import {
   type MangaStreamDiscoverSection,
   type MangaStreamSearchMetadata,
@@ -40,8 +40,9 @@ import {
   type Months,
   type StatusTypes,
 } from "./models";
+import { MangaStreamInterceptor } from "./network";
 import { MangaStreamParser } from "./parsers";
-import { getUsePostIds, MangaStreamSettings } from "./forms";
+import { getFilterTagsBySection, getIncludedTagBySection } from "./utils";
 
 export abstract class MangaStreamGeneric
   implements
