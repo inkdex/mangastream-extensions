@@ -25,9 +25,9 @@ export interface StatusTypes {
   COMPLETED: string;
 }
 
-export interface MangaStreamSearchMetadata {
+export type MangaStreamSearchMetadata = {
   page?: number;
-}
+};
 
 export interface MangaStreamSearchResultItem extends SearchResultItem {
   path: string;
