@@ -20,7 +20,6 @@ import {
   type PagedResults,
   PaperbackInterceptor,
   type Request,
-  type SearchFilter,
   type SearchQuery,
   type SearchResultItem,
   type SearchResultsProviding,
@@ -29,6 +28,11 @@ import {
   type TagSection,
   URL,
 } from "@paperback/types";
+import {
+  SearchFilterForm,
+  type SearchFilter,
+  type SearchFilterValue,
+} from "@paperback/types/lib/compat/0.8";
 import * as cheerio from "cheerio";
 import { type AnyNode } from "domhandler";
 
@@ -187,8 +191,13 @@ export abstract class MangaStreamGeneric
     return tags;
   }
 
+  async getAdvancedSearchForm(query: SearchQuery<SearchFilterValue[]>) {
+    // TODO: Replace compat wrapper with proper search form implementation
+    return new SearchFilterForm(query.metadata, this.getSearchFilters());
+  }
+
   async getSearchResults(
-    query: SearchQuery,
+    query: SearchQuery<SearchFilterValue[]>,
     metadata: MangaStreamSearchMetadata | undefined,
   ): Promise<PagedResults<SearchResultItem>> {
     const page: number = metadata?.page ?? 1;
@@ -204,7 +213,7 @@ export abstract class MangaStreamGeneric
       );
     } else {
       const includedTags: string[] = [];
-      for (const filter of query.filters) {
+      for (const filter of query?.metadata ?? []) {
         const tags = (filter.value ?? {}) as Record<string, "included" | "excluded">;
         for (const tag of Object.entries(tags)) {
           includedTags.push(tag[0]);
@@ -333,7 +342,7 @@ export abstract class MangaStreamGeneric
 
   async getDiscoverSectionItems(
     section: DiscoverSection,
-    metadata: unknown,
+    metadata: MangaStreamSearchMetadata | undefined,
   ): Promise<PagedResults<DiscoverSectionItem>> {
     const request = {
       url: this.domain,
