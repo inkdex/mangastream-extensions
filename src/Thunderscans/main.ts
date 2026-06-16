@@ -1,18 +1,17 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { ContentRating } from "@paperback/types";
+import type { ContentRating } from "@paperback/types";
 import { type BasicAcceptedElems, type CheerioAPI } from "cheerio";
 import { type AnyNode } from "domhandler";
 
 import { MangaStreamGeneric } from "../generic/main";
-import config from "./pbconfig";
 import pbconfig from "./pbconfig";
 
 const DOMAIN_NAME = "https://en-thunderscans.com";
 
 class ThunderscansExt extends MangaStreamGeneric {
-  name: string = config.name;
+  name: string = pbconfig.name;
   domain: string = DOMAIN_NAME;
   contentRating: ContentRating = pbconfig.contentRating;
 

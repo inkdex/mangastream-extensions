@@ -3,30 +3,24 @@
 
 import {
   BasicRateLimiter,
+  CookieStorageInterceptor,
+  DiscoverSectionType,
+  URL,
   type Chapter,
   type ChapterDetails,
-  type ChapterProviding,
-  type CloudflareBypassRequestProviding,
-  ContentRating,
+  type ContentRating,
   type Cookie,
-  CookieStorageInterceptor,
   type DiscoverSection,
   type DiscoverSectionItem,
-  type DiscoverSectionProviding,
-  DiscoverSectionType,
-  type Extension,
-  Form,
-  type MangaProviding,
+  type ExtensionImpl,
+  type Form,
   type PagedResults,
-  PaperbackInterceptor,
+  type PaperbackInterceptor,
   type Request,
   type SearchQuery,
   type SearchResultItem,
-  type SearchResultsProviding,
-  type SettingsFormProviding,
   type SourceManga,
   type TagSection,
-  URL,
 } from "@paperback/types";
 import {
   SearchFilterForm,
@@ -36,6 +30,7 @@ import {
 import * as cheerio from "cheerio";
 import { type AnyNode } from "domhandler";
 
+import type { basePbConfig } from "./config";
 import { getUsePostIds, MangaStreamSettings } from "./forms";
 import {
   type MangaStreamDiscoverSection,
@@ -48,16 +43,7 @@ import { MangaStreamInterceptor } from "./network";
 import { MangaStreamParser } from "./parsers";
 import { getFilterTagsBySection, getIncludedTagBySection } from "./utils";
 
-export abstract class MangaStreamGeneric
-  implements
-    Extension,
-    SearchResultsProviding,
-    MangaProviding,
-    ChapterProviding,
-    SettingsFormProviding,
-    DiscoverSectionProviding,
-    CloudflareBypassRequestProviding
-{
+export abstract class MangaStreamGeneric implements ExtensionImpl<typeof basePbConfig> {
   abstract domain: string;
   abstract name: string;
   abstract contentRating: ContentRating;

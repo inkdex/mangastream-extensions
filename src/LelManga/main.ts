@@ -1,18 +1,17 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { ContentRating } from "@paperback/types";
+import type { ContentRating } from "@paperback/types";
 import { type CheerioAPI } from "cheerio";
 
 import { MangaStreamGeneric } from "../generic/main";
-import config from "./pbconfig";
 import pbconfig from "./pbconfig";
 
 const DOMAIN_NAME: string = "https://www.lelmanga.com";
 
 class LelMangaExtension extends MangaStreamGeneric {
   domain = DOMAIN_NAME;
-  name = config.name;
+  name = pbconfig.name;
   contentRating: ContentRating = pbconfig.contentRating;
 
   override language = "🇫🇷";

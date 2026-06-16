@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Copyright © 2026 Inkdex */
 
-import { MangaStreamGeneric } from "./main";
+import type { MangaStreamGeneric } from "./main";
 import { type Months } from "./models";
 
 export function convertDate(dateString: string, source: MangaStreamGeneric): Date {
