@@ -5,14 +5,13 @@ import {
   type TagSection,
   type Chapter,
   type ChapterDetails,
-  ContentRating,
+  type ContentRating,
 } from "@paperback/types";
 import { type CheerioAPI } from "cheerio";
 import * as cheerio from "cheerio";
 
 import { getUsePostIds } from "../generic/forms";
 import { MangaStreamGeneric } from "../generic/main";
-import config from "./pbconfig";
 import pbconfig from "./pbconfig";
 
 const DOMAIN_NAME = "https://sushiscan.net";
@@ -20,7 +19,7 @@ const DOMAIN_NAME = "https://sushiscan.net";
 const normalizeChapterId = (id: string) => id.replace(/[-\s]/g, "").toLowerCase();
 
 class SushiScansExt extends MangaStreamGeneric {
-  name: string = config.name;
+  name: string = pbconfig.name;
   domain: string = DOMAIN_NAME;
   contentRating: ContentRating = pbconfig.contentRating;
 

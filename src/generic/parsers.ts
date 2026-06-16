@@ -10,10 +10,10 @@ import {
   type TagSection,
 } from "@paperback/types";
 import type { Cheerio, CheerioAPI } from "cheerio";
-import { Element } from "domhandler";
+import type { Element } from "domhandler";
 
 import { getUsePostIds } from "./forms";
-import { MangaStreamGeneric } from "./main";
+import type { MangaStreamGeneric } from "./main";
 import { type MangaStreamDiscoverSection, type MangaStreamSearchResultItem } from "./models";
 import { convertDate } from "./utils";
 
