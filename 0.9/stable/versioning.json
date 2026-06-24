@@ -1,8 +1,8 @@
 {
-  "buildTime": "2026-06-15T17:46:48.290Z",
+  "buildTime": "2026-06-24T20:16:05.342Z",
   "builtWith": {
-    "toolchain": "1.0.0-alpha.87",
-    "types": "1.0.0-alpha.87"
+    "toolchain": "1.0.0-alpha.92",
+    "types": "1.0.0-alpha.92"
   },
   "repository": {
     "name": "MangaStream Extensions (0.9)",
